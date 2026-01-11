@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to Debian Server
         run: |
-          ssh -v -i ~/.ssh/id_ed25519 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo SSH OK"
+          ssh -v -i ~/.ssh/id_ed25519_web2 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo SSH OK"
           set -e
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
           set -e
