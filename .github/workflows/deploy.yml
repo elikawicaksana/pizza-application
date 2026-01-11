@@ -1,4 +1,4 @@
-name: Deploy Pizza to Debian
+name: Deploy Pizza App to Debian
 
 on:
   push:
@@ -12,23 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH Agent
+      - name: Setup SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: |
+            ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Add server to known_hosts
+      - name: Deploy to Debian Server
         run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: |
-          ssh -v ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo SSH CONNECTED"
-
-      - name: Deploy to Server
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          set -e
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
           set -e
           cd /var/www/web2
           echo "BEFORE: $(git rev-parse --short HEAD)"
