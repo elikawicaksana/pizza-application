@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>MJS PIZZA PLS BISA</h1><br/><br/>
+    <?php echo "HAI PHP YUHU" ?>
+    <center>
+        <div class="food-item">
+            <div class="grid1">
+                <img src="img/peperoni.jpg" alt="1">
+                <div class="details">
+                    <div class="details-sub">
+                        <h5>Peperoni Pizza</h5>
+                    </div>
+                    <p>Rp 8,000</p>
+                    <div class="center">
+                        <input type="radio" id="peperoni" name="menu" value="8000" onchange="handleChangeMenu(this)">
+                    </div>
+                </div>
+            </div>
+            <div class="grid2">
+                <img src="img/neapolitan.jpg" alt="1">
+                <div class="details">
+                    <div class="details-sub">
+                        <h5>Neapolitan Pizza</h5>
+                    </div>
+                    <p>Rp 10,000</p>
+                    <div class="center">
+                        <input type="radio" id="neapolitan" name="menu" value="10000" onchange="handleChangeMenu(this)">
+                    </div>
+                </div>
+            </div>
+            <div class="grid3">
+                <img src="img/buffalo.jpg" alt="1">
+                <div class="details">
+                    <div class="details-sub">
+                        <h5>Buffalo Pizza</h5>
+                    </div>
+                    <p>Rp 12,000</p>
+                    <div class="center">
+                        <input type="radio" id="buffalo" name="menu" value="12000" onchange="handleChangeMenu(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="fsize">Size</h2>
+        <div class="food-size">
+            <input type="radio" name="sizepz" value="-1000" id="small" onchange="handleChangeSize(this)"> Small
+            <input type="radio" name="sizepz" value="0" id="medium" onchange="handleChangeSize(this)"> Medium
+            <input type="radio" name="sizepz" value="2000" id="large" onchange="handleChangeSize(this)"> Large
+        </div>
+
+        <h2 class="tsize">Toppings</h2>
+        <div class="food-toppings">
+            <form>
+                <label><input type="checkbox" name="toppings" value="1000" id="avocado" onclick="handleChangeTopping(this)"> Avocado</label>
+                <label><input type="checkbox" name="toppings" value="2000" id="lobster" onclick="handleChangeTopping(this)"> Lobster</label>
+                <label><input type="checkbox" name="toppings" value="3000" id="bacon" onclick="handleChangeTopping(this)"> Bacon </label>
+                <label><input type="checkbox" name="toppings" value="1000" id="broccoli" onclick="handleChangeTopping(this)"> Broccoli</label>
+                <label><input type="checkbox" name="toppings" value="2000" id="oyster" onclick="handleChangeTopping(this)"> Oyster</label>
+                <label><input type="checkbox" name="toppings" value="3000" id="duck" onclick="handleChangeTopping(this)"> Duck </label>
+                <label><input type="checkbox" name="toppings" value="1000" id="onions" onclick="handleChangeTopping(this)"> Onions </label>
+                <label><input type="checkbox" name="toppings" value="2000" id="salmon" onclick="handleChangeTopping(this)"> Salmon</label>
+                <label><input type="checkbox" name="toppings" value="3000" id="ham" onclick="handleChangeTopping(this)"> Ham </label>
+                <label><input type="checkbox" name="toppings" value="1000" id="zucchini" onclick="handleChangeTopping(this)"> Zucchini</label>
+                <label><input type="checkbox" name="toppings" value="2000" id="tuna" onclick="handleChangeTopping(this)"> Tuna</label>
+                <label><input type="checkbox" name="toppings" value="3000" id="sausage" onclick="handleChangeTopping(this)"> Sausage</label>
+            </form>
+        </div><br/>
+
+        <h2 class="psize">Price</h2>
+        <span class="pricerp" id="total">Rp 0,00</span>
+    </center>
+</body>
+<script src="script.js"></script>
+</html>
