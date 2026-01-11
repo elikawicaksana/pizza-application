@@ -1,4 +1,4 @@
-name: Deploy Pizza App to Debian
+name: Deploy Pizza to Debian
 
 on:
   push:
