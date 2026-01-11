@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>MJS PIZZA PLS BISA</h1><br/><br/>
-    <?php echo "HAI PHP YUHU"; ?>
     <center>
         <div class="food-item">
             <div class="grid1">
