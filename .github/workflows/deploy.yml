@@ -1,8 +1,9 @@
-name: Deploy Pizza App to Debian
+name: Deploy PHP App
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -12,21 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1
         with:
-          ssh-private-key: |
-            ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
 
-      - name: Deploy to Debian Server
-        run: |
-          set -e
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-          set -e
-          cd /var/www/web2
-          echo "BEFORE: $(git rev-parse --short HEAD)"
-          git fetch origin main
-          git reset --hard origin/main
-          echo "AFTER:  $(git rev-parse --short HEAD)"
-          sudo systemctl reload nginx
-          EOF
+            cd /var/www/web2
+
+            git fetch origin main
+            git reset --hard origin/main
+
+            chmod -R 755 .
