@@ -2,16 +2,14 @@ name: Deploy PHP App
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Deploy to VM
         uses: appleboy/ssh-action@v1
@@ -19,12 +17,9 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
             set -e
-
             cd /var/www/web2
-
             git fetch origin main
             git reset --hard origin/main
-
-            chmod -R 755 .
